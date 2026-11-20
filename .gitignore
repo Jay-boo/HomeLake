@@ -1,0 +1,52 @@
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+
+# Local data and generated state
+data/*
+!data/.gitkeep
+spark-warehouse/
+metastore_db/
+derby.log/
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and Spark event data
+*.log
+logs/
+spark-events/
+eventlogs/
+
+# Node / frontend
+node_modules/
+.npm/
+dist/
+workspace/frontend/dist/
+
+# IDE and OS
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
