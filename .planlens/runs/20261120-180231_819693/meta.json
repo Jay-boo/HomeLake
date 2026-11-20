@@ -1,0 +1,19 @@
+{
+ "pyspark": "4.0.1",
+ "entry": "/home/jayboo/projects/dataplatform-jayboo/tests/test_spark_connect_mode.py",
+ "argv": [
+  "/home/jayboo/projects/dataplatform-jayboo/tests/test_spark_connect_mode.py"
+ ],
+ "python": "3.12.3",
+ "started": "2026-11-20T17:02:31.375604+00:00",
+ "status": "complete",
+ "appIds": [],
+ "ended": "2026-11-20T17:02:36.265084+00:00",
+ "truncated": false,
+ "errors": [
+  {
+   "where": "session",
+   "message": "spark-connect-unsupported"
+  }
+ ]
+}

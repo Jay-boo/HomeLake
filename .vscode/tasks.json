@@ -1,0 +1,30 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Platform: Start",
+            "type": "shell",
+            "command": "make up",
+            "problemMatcher": []
+        },
+        {
+            "label": "Platform: Stop",
+            "type": "shell",
+            "command": "make down",
+            "problemMatcher": []
+        },
+        {
+            "label": "Platform: Status",
+            "type": "shell",
+            "command": "make ps",
+            "problemMatcher": []
+        },
+        {
+            "label": "Spark: Submit hello world",
+            "type": "shell",
+            "command": "make submit JOB=jobs/hello_world.py",
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+ "pyspark": "4.0.1",
+ "entry": "/home/jayboo/projects/dataplatform-jayboo/jobs/hello_world.py",
+ "argv": [
+  "/home/jayboo/projects/dataplatform-jayboo/jobs/hello_world.py"
+ ],
+ "python": "3.12.3",
+ "started": "2026-11-20T16:55:08.724227+00:00",
+ "status": "complete",
+ "appIds": [
+  "local-1795193713110"
+ ],
+ "eventLogDir": "file:///home/jayboo/projects/dataplatform-jayboo/.planlens/runs/20261120-175508_814412/eventlog",
+ "ended": "2026-11-20T16:55:18.048955+00:00",
+ "truncated": false,
+ "errors": []
+}
