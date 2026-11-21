@@ -81,6 +81,9 @@ services:
       - spark.executor.memory=512m
     environment:
       SPARK_NO_DAEMONIZE: "true"
+      POSTGRES_USER: ${POSTGRES_USER:-homelake}
+      POSTGRES_DB: ${POSTGRES_DB:-metastore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
     depends_on: [spark-master, spark-worker-1, spark-worker-2]
     ports:
       - "15002:15002"
@@ -112,13 +115,40 @@ services:
     entrypoint: ["/usr/bin/tini", "--", "/usr/local/bin/entrypoint.sh", "spark-submit"]
     environment:
       SPARK_NO_DAEMONIZE: "true"
+      POSTGRES_USER: ${POSTGRES_USER:-homelake}
+      POSTGRES_DB: ${POSTGRES_DB:-metastore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
     volumes:
       - ../data:/opt/data
       - ../:/opt/project:ro
     working_dir: /opt/project
+    networks: [bdp]
+  
+  postgres:
+    image: postgres:${POSTGES_VERSION:-16}
+    container_name: homelake-postgres
+    hostname: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-metastore}
+      POSTGRES_USER: ${POSTGRES_USER:-homelake}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-homelake} -d ${POSTGRES_DB:-metastore}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
     networks: [bdp]
 
 networks:
   bdp:
     name: bdp-network
     driver: bridge
+
+volumes:
+  postgres-data:
+    name: homelake-postgres-data

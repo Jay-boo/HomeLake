@@ -38,6 +38,7 @@ RUN curl -fsSL "https://repo1.maven.org/maven2/io/delta/delta-spark_2.13/${DELTA
       -o "${SPARK_HOME}/jars/postgresql-${POSTGRES_JDBC_VERSION}.jar"
 
 COPY conf/spark-defaults.conf "${SPARK_HOME}/conf/spark-defaults.conf"
+COPY conf/hive-site.xml "${SPARK_HOME}/conf/hive-site.xml"
 COPY --chmod=0755 entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN mkdir -p /opt/data /opt/project \
